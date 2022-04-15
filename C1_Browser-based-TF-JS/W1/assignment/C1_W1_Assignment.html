@@ -32,6 +32,12 @@
             const testingData = tf.data.csv(testingUrl, {
                 
                 // YOUR CODE HERE
+                const trainingData = tf.data.csv(trainingUrl, {
+                columnConfigs:{
+                    diagnosis:{
+                        isLabel: true
+                    }
+                }
                 
             });
             
@@ -57,9 +63,13 @@
             // HINT: Make sure your input layer has the correct input shape. We also suggest
             // using ReLu activation functions where applicable. For this dataset only a few
             // hidden layers should be enough to get a high accuracy.  
+                // YOUR CODE HERE
             const model = tf.sequential();
+            model.add(tf.layers.dense({inputShape: [numOfFeatures],activation:"sigmoid",units:31 }))
+            model.add(tf.layers.dense({activation:"sigmoid",units:15 }))
             
-            // YOUR CODE HERE
+            model.add(tf.layers.dense({activation: "sigmoid", units: 1}));
+            
 
             
             
